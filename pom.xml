@@ -13,6 +13,7 @@
 	<version>1.0.0</version>
 	<name>umusada-bank-service</name>
 	<description>Umusada to Bank micro service</description>
+	<packaging>jar</packaging>
 	<url/>
 	<licenses>
 		<license/>
