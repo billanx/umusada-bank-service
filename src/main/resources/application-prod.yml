@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: umusada-bank-service
+
+  datasource:
+    url: jdbc:mysql://68.183.43.111:3306/umusada_core?allowPublicKeyRetrieval=true&useSSL=false
+    username: loan
+    password: lOan@Ishyiga_2025!
+#    username: kimenyi
+#    password: kImenyi@Ishyiga_2025!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  main:
+    allow-circular-references: true
+    allow-bean-definition: true
+
+  jackson:
+    default-property-inclusion: NON_NULL
+
+server:
+  port: 8086
+
+logging:
+  level:
+    org.springframework: INFO
+    org.hibernate.SQL: INFO  # Show SQL queries
+    org.hibernate.type.descriptor.sql.BasicBinder: INFO  # Show SQL parameters
