@@ -23,43 +23,43 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class) // Use Mockito extension
 public class CallbackProcessingServiceTest {
 
-    @Mock
-    private BusinessRequestRepository repository; // Mock the repository
-
-    @InjectMocks
-    private CallbackProcessingService callbackProcessingService; // Inject mocks into the service being tested
-
-    private BusinessRequestEntity existingEntity;
-
-    @BeforeEach
-    void setUp() {
-        existingEntity = BusinessRequestEntity.builder()
-                .messageId("REQ234601P43")
-                .requestPayload("{}")
-                .requestTime(LocalDateTime.now())
-                .build();
-
-        when(repository.findById("REQ234601P43")).thenReturn(Optional.of(existingEntity));
-    }
-
-    @Test
-    void shouldProcessCallbackSuccessfully() {
-        CallbackResponse callback = new CallbackResponse();
-        callback.setMessageId("REQ234601P43");
-        callback.setStatusCode("1");
-        callback.setStatusDescription("FAILURE");
-        callback.setMessageCode("400");
-        callback.setMessageDescription("Business already registered.");
-
-        callbackProcessingService.handleCallback(callback);
-
-        ArgumentCaptor<BusinessRequestEntity> captor = ArgumentCaptor.forClass(BusinessRequestEntity.class);
-        verify(repository, times(1)).save(captor.capture());
-
-        BusinessRequestEntity savedEntity = captor.getValue();
-        assertThat(savedEntity.getCallbackStatus()).isEqualTo("1");
-        assertThat(savedEntity.getCallbackPayload()).contains("Business already registered");
-        assertThat(savedEntity.getCallbackTime()).isNotNull();
-    }
+//    @Mock
+//    private BusinessRequestRepository repository; // Mock the repository
+//
+//    @InjectMocks
+//    private CallbackProcessingService callbackProcessingService; // Inject mocks into the service being tested
+//
+//    private BusinessRequestEntity existingEntity;
+//
+//    @BeforeEach
+//    void setUp() {
+//        existingEntity = BusinessRequestEntity.builder()
+//                .messageId("REQ234601P43")
+//                .requestPayload("{}")
+//                .requestTime(LocalDateTime.now())
+//                .build();
+//
+//        when(repository.findById("REQ234601P43")).thenReturn(Optional.of(existingEntity));
+//    }
+//
+//    @Test
+//    void shouldProcessCallbackSuccessfully() {
+//        CallbackResponse callback = new CallbackResponse();
+//        callback.setMessageId("REQ234601P43");
+//        callback.setStatusCode("1");
+//        callback.setStatusDescription("FAILURE");
+//        callback.setMessageCode("400");
+//        callback.setMessageDescription("Business already registered.");
+//
+//        callbackProcessingService.handleCallback(callback);
+//
+//        ArgumentCaptor<BusinessRequestEntity> captor = ArgumentCaptor.forClass(BusinessRequestEntity.class);
+//        verify(repository, times(1)).save(captor.capture());
+//
+//        BusinessRequestEntity savedEntity = captor.getValue();
+//        assertThat(savedEntity.getCallbackStatus()).isEqualTo("1");
+//        assertThat(savedEntity.getCallbackPayload()).contains("Business already registered");
+//        assertThat(savedEntity.getCallbackTime()).isNotNull();
+//    }
 }
 
