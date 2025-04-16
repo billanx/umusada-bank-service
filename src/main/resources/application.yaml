@@ -4,7 +4,7 @@ spring:
   main:
     banner-mode: 'off'
   profiles:
-    active: prod
+    active: dev
   application:
     name: 'umusada-bank-service'
 
