@@ -5,7 +5,7 @@ FROM amazoncorretto:17-alpine AS runtime
 WORKDIR /app
 
 # Copy the built JAR file
-COPY target/umusada-bank-service.jar app.jar
+COPY target/*.jar app.jar
 
 
 # Expose the application port
