@@ -15,7 +15,7 @@ services:
 
   spring-app:
     build: .
-    container_name: ishyiga-api
+    container_name: umusada-bank-service
     restart: always
     #    depends_on:
     #      - localhost
